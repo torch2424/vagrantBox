@@ -4,14 +4,14 @@
 #And my guide: https://github.com/torch2424/Elementary-Ubuntu-Web-Dev-Environment
 
 #Remove Non-interactive .bashrc lines
-cp /home/vagrant/.bashrc /home/vagrant/.bashrc.copy
-sed -ei '5,10d;' /home/vagrant/.bashrc
+sed '5,10d;' /home/vagrant/.bashrc > /home/vagrant/.bashrcNew
+mv /home/vagrant/.bashrcNew /home/vagrant/.bashrc
 
 #Update The Distro
 sudo apt-get update
 
 #Download things for Npm and Ruby(Compass and things)
-sudo apt-get install -y git build-essential libssl-dev git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev
+sudo apt-get install -y git build-essential libssl-dev git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev ruby-dev
 
 #Install NVM (Node Version Manager)
 curl https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | sh
@@ -36,9 +36,9 @@ git clone git://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-buil
 echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bashrc
 source /home/vagrant/.bashrc
 
-#Use RBEnv To install Ruby
-rbenv install -v 2.2.3
-rbenv global 2.2.3
+#Use RBEnv To install Ruby (Latest on 4/23/16)
+rbenv install -v 2.3.0
+rbenv global 2.3.0
 #ensure it installed
 ruby -v
 
@@ -68,5 +68,8 @@ bower --version
 grunt --version
 express --version
 
+#Lastly, clone my bash-it and install
+git clone --depth=1 https://github.com/torch2424/bash-it.git ~/.bash_it
+~/.bash_it/install.sh < < /vagrant/bashItInput.txt
+
 #Finished!
-cp /home/vagrant/.bashrc.copy /home/vagrant/.bashrc
