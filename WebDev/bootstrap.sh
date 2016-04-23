@@ -3,15 +3,18 @@
 #Made with help from Digital Ocean Guides
 #And my guide: https://github.com/torch2424/Elementary-Ubuntu-Web-Dev-Environment
 
+#Remove Non-interactive .bashrc lines
+#sed -e '5,10d;' /home/vagrant/.bashrc
+
 #Update The Distro
-apt-get update
+sudo apt-get update
 
 #Download things for Npm and Ruby(Compass and things)
-apt-get install git build-essential libssl-dev git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev
+sudo apt-get install -y git build-essential libssl-dev git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev
 
 #Install NVM (Node Version Manager)
 curl https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | sh
-source ~/.bashrc
+source /home/vagrant/.bashrc
 
 #Install Node (Latest LTS on 4/23/16)
 nvm install 4.4.3
@@ -20,8 +23,8 @@ node -v
 nvm alias default 4.4.3
 
 #Install npm without sudo
-curl https://raw.githubusercontent.com/glenpike/npm-g_nosudo/master/npm-g-nosudo.sh | sh < npmNoSudoInput.txt
-source ~/.bashrc
+curl https://raw.githubusercontent.com/glenpike/npm-g_nosudo/master/npm-g-nosudo.sh | sh < /vagrant/npmNoSudoInput.txt
+source /home/vagrant/.bashrc
 
 #Install RBEnv
 cd
@@ -30,7 +33,7 @@ echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
 echo 'eval "$(rbenv init -)"' >> ~/.bashrc
 git clone git://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
 echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bashrc
-source ~/.bashrc
+source /home/vagrant/.bashrc
 
 #Use RBEnv To install Ruby
 rbenv install -v 2.2.3
@@ -40,19 +43,19 @@ ruby -v
 
 #ruby gem tweaking
 echo "gem: --no-document" > ~/.gemrc
-gem install bundler
+sudo gem install bundler
 
 #Install Rails
-gem install rails
+sudo gem install rails
 rbenv rehash
 rails -v
 
 #INstall compass
-gem install compass
+sudo gem install compass
 rbenv rehash
 
 #Install Jekyll
-gem install jekyll
+sudo gem install jekyll
 rbenv rehash
 
 #Install stuff with npm
