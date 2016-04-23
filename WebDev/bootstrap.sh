@@ -4,7 +4,8 @@
 #And my guide: https://github.com/torch2424/Elementary-Ubuntu-Web-Dev-Environment
 
 #Remove Non-interactive .bashrc lines
-#sed -e '5,10d;' /home/vagrant/.bashrc
+cp /home/vagrant/.bashrc /home/vagrant/.bashrc.copy
+sed -ei '5,10d;' /home/vagrant/.bashrc
 
 #Update The Distro
 sudo apt-get update
@@ -68,3 +69,4 @@ grunt --version
 express --version
 
 #Finished!
+cp /home/vagrant/.bashrc.copy /home/vagrant/.bashrc
