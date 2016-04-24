@@ -11,7 +11,7 @@ mv /home/vagrant/.bashrcNew /home/vagrant/.bashrc
 sudo apt-get update
 
 #Download things for Npm and Ruby(Compass and things)
-sudo apt-get install -y git build-essential libssl-dev git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev ruby-dev
+sudo apt-get install -y git build-essential libssl-dev git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev
 
 #Install NVM (Node Version Manager)
 curl https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | sh
@@ -39,24 +39,25 @@ source /home/vagrant/.bashrc
 #Use RBEnv To install Ruby (Latest on 4/23/16)
 rbenv install -v 2.3.0
 rbenv global 2.3.0
+
 #ensure it installed
 ruby -v
 
 #ruby gem tweaking
 echo "gem: --no-document" > ~/.gemrc
-sudo gem install bundler
+gem install bundler
 
 #Install Rails
-sudo gem install rails
+gem install rails
 rbenv rehash
 rails -v
 
 #INstall compass
-sudo gem install compass
+gem install compass
 rbenv rehash
 
 #Install Jekyll
-sudo gem install jekyll
+gem install jekyll
 rbenv rehash
 
 #Install stuff with npm
@@ -66,7 +67,6 @@ npm install --global bower grunt-cli ionic express
 yo --version
 bower --version
 grunt --version
-express --version
 
 #Clone my bash-it and install
 git clone --depth=1 https://github.com/torch2424/bash-it.git ~/.bash_it
