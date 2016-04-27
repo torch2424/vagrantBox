@@ -17,10 +17,10 @@ sudo apt-get install -y build-essential python-dev python-pip git git-core curl
 sudo pip install --upgrade pip
 
 #Install scipy (And Numpy)
-sudo pip install -U git+https://github.com/scipy/scipy.git
+sudo pip install -U -H git+https://github.com/scipy/scipy.git
 
 #Install libraries with pip
-sudo pip install -U nltk textblob scikit-learn
+sudo pip install -U -H nltk textblob scikit-learn
 
 #textblob nltk library
 python -m textblob.download_corpora
