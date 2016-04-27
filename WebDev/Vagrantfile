@@ -14,6 +14,9 @@ Vagrant.configure(2) do |config|
   # boxes at https://atlas.hashicorp.com/search.
   config.vm.box = "ubuntu/trusty64"
 
+  # Name the Vagrant instance
+  config.vm.define "WebDevVagrant"
+
   #Run my bootstrap script
   config.vm.provision :shell, path: "bootstrap.sh", privileged: false
 
