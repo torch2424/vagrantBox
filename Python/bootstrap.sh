@@ -11,16 +11,16 @@ mv /home/vagrant/.bashrcNew /home/vagrant/.bashrc
 sudo apt-get update
 
 #Download things for Npm and Ruby(Compass and things)
-sudo apt-get install -y build-essential python-dev python-pip git git-core curl
+sudo apt-get install -y build-essential libssl-dev libffi-dev python-dev python-pip git git-core curl
 
 #Update pip
 sudo pip install --upgrade pip
 
 #Install scipy (And Numpy)
-sudo pip install -U -H git+https://github.com/scipy/scipy.git
+sudo -H pip install -U git+https://github.com/scipy/scipy.git
 
 #Install libraries with pip
-sudo pip install -U -H nltk textblob scikit-learn
+sudo -H pip install -U nltk textblob scikit-learn
 
 #textblob nltk library
 python -m textblob.download_corpora
