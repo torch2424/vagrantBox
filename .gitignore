@@ -3,3 +3,4 @@
 
 #Exceptions to the above folder rule, for organization in bootstrapping
 !/WordpressApache/apache
+!/WordpressApache/html/index.php

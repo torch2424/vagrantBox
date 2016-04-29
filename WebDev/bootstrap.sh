@@ -4,6 +4,7 @@
 #And my guide: https://github.com/torch2424/Elementary-Ubuntu-Web-Dev-Environment
 
 #Remove Non-interactive .bashrc lines
+echo "Modifying .bashrc to allow edits"
 sed '5,10d;' /home/vagrant/.bashrc > /home/vagrant/.bashrcNew
 mv /home/vagrant/.bashrcNew /home/vagrant/.bashrc
 

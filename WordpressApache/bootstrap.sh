@@ -4,6 +4,7 @@
 #And my guide: https://github.com/torch2424/Elementary-Ubuntu-Web-Dev-Environment
 
 #Remove Non-interactive .bashrc lines
+echo "Modifying .bashrc to allow edits"
 sed '5,10d;' /home/vagrant/.bashrc > /home/vagrant/.bashrcNew
 mv /home/vagrant/.bashrcNew /home/vagrant/.bashrc
 
@@ -13,27 +14,32 @@ sudo apt-get update
 # Download Lamp stack packages/dev packages
 sudo apt-get install -y apache2 php5 libapache2-mod-php5 php5-mcrypt git vim curl
 
-#Download mysql server (non-interactive)
-export DEBIAN_FRONTEND=noninteractive
-sudo -E apt-get -q -y install mysql-server php5-mysql
-#Set a mysql password
-mysqladmin -u root password rootpassword
+#Download mysql server and phpmyadmin (non-interactive)
+#From: https://gist.github.com/rrosiek/8190550
+echo "mysql-server mysql-server/root_password password rootpassword" | debconf-set-selections
+echo "mysql-server mysql-server/root_password_again password rootpassword" | debconf-set-selections
+echo "phpmyadmin phpmyadmin/dbconfig-install boolean true" | debconf-set-selections
+echo "phpmyadmin phpmyadmin/app-password-confirm password rootpassword" | debconf-set-selections
+echo "phpmyadmin phpmyadmin/mysql/admin-pass password rootpassword" | debconf-set-selections
+echo "phpmyadmin phpmyadmin/mysql/app-pass password rootpassword" | debconf-set-selections
+echo "phpmyadmin phpmyadmin/reconfigure-webserver multiselect none" | debconf-set-selections
+sudo apt-get -y install mysql-server php5-mysql phpmyadmin
 
 # Replace apache dir.conf, enable apache php
-sudo mv /vagrant/apache/dir.conf /etc/apache2/mods-enabled/dir.conf
+sudo cp /vagrant/apache/dir.conf /etc/apache2/mods-enabled/dir.conf
 
 #Restart apache
 sudo service apache2 restart
 
 #Set our document root so we can access it
 mkdir /vagrant/html
-sudo mv /vagrant/apache/000-default.conf /etc/apache2/sites-available/000-default.conf
+sudo cp /vagrant/apache/000-default.conf /etc/apache2/sites-available/000-default.conf
 
 #Restart apache
 sudo service apache2 restart
 
 #Allow .htaccess overrieds
-sudo mv /vagrant/apache/apache2.conf /etc/apache2/apache2.conf
+sudo cp /vagrant/apache/apache2.conf /etc/apache2/apache2.conf
 sudo a2enmod rewrite
 sudo apache2ctl configtest
 sudo systemctl restart apache2
