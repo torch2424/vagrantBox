@@ -1,5 +1,19 @@
-
-<h1 style="text-align: center;">Please go to a repo subdirectory of the vagrant box</h1>
+<style>
+h1 {
+    text-align: center;
+    color: #090909;
+    -webkit-transition: opacity 2s ease-in;
+    -moz-transition: opacity 2s ease-in;
+    -o-transition: opacity 2s ease-in;
+    -ms-transition: opacity 2s ease-in;
+    transition: opacity 2s ease-in;
+}
+</style>
+<br>
+<br>
+<h1>Please go to a repo subdirectory of the vagrant box</h1>
+<br>
+<br>
 <?php
 phpinfo();
 ?>

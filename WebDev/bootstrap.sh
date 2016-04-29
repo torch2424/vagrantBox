@@ -78,5 +78,10 @@ source /home/vagrant/.bashrc
 git config --global credential.helper cache
 git config --global credential.helper 'cache --timeout=43200'
 
+#Add our awesome ubuntu banner
+sudo cp /vagrant/UbuntuBanner/sshd_config /etc/ssh/sshd_config
+sudo cp /vagrant/UbuntuBanner/issue.net /etc/issue.net
+sudo cp /vagrant/UbuntuBanner/issue.net /etc/motd
+
 
 #Finished!
