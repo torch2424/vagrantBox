@@ -3,6 +3,8 @@
 #Clone my bash-it and install
 git clone --depth=1 https://github.com/torch2424/bash-it.git ~/.bash_it
 ~/.bash_it/install.sh < /vagrant/BaseVagrant/bashItInput.txt
+
+#Sourc the bashrc, may or may not work, but seems to for me
 source /home/vagrant/.bashrc
 
 #Cache github credentials for 12 hours
