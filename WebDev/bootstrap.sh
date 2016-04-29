@@ -11,7 +11,7 @@ mv /home/vagrant/.bashrcNew /home/vagrant/.bashrc
 sudo apt-get update
 
 #Download things for Npm and Ruby(Compass and things)
-sudo apt-get install -y git build-essential libssl-dev git-core curl zlib1g-dev libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev
+sudo apt-get install -y git build-essential libssl-dev git-core curl zlib1g-dev libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev vim
 
 #Install NVM (Node Version Manager)
 curl https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | sh

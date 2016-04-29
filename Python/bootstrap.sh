@@ -11,7 +11,7 @@ mv /home/vagrant/.bashrcNew /home/vagrant/.bashrc
 sudo apt-get update
 
 #Download things for Npm and Ruby(Compass and things)
-sudo apt-get install -y build-essential libssl-dev libffi-dev python-dev python-pip git git-core curl
+sudo apt-get install -y build-essential libssl-dev libffi-dev python-dev python-pip git git-core curl vim
 
 #Update pip
 sudo pip install --upgrade pip
@@ -27,6 +27,9 @@ echo "Vagrant Bootstrap: Scipy was installed!"
 
 #Install libraries with pip
 sudo -H pip install -U nltk textblob scikit-learn
+
+#Echo txtblob install, bootstrap does not
+echo "Vagrant Bootstrap: Currently downloading textblob/nltk data, please wait..."
 
 #textblob nltk library
 python -m textblob.download_corpora
