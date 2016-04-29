@@ -10,8 +10,8 @@ mv /home/vagrant/.bashrcNew /home/vagrant/.bashrc
 #Update The Distro
 sudo apt-get update
 
-# Download Lamp stack packages
-sudo apt-get install -y apache2 php5 libapache2-mod-php5 php5-mcrypt
+# Download Lamp stack packages/dev packages
+sudo apt-get install -y apache2 php5 libapache2-mod-php5 php5-mcrypt git vim curl
 
 #Download mysql server (non-interactive)
 export DEBIAN_FRONTEND=noninteractive
@@ -19,10 +19,33 @@ sudo -E apt-get -q -y install mysql-server php5-mysql
 #Set a mysql password
 mysqladmin -u root password rootpassword
 
+# Replace apache dir.conf, enable apache php
+sudo mv /vagrant/apache/dir.conf /etc/apache2/mods-enabled/dir.conf
+
+#Restart apache
+sudo service apache2 restart
+
+#Set our document root so we can access it
+mkdir /vagrant/html
+sudo mv /vagrant/apache/000-default.conf /etc/apache2/sites-available/000-default.conf
+
+#Restart apache
+sudo service apache2 restart
+
+#Allow .htaccess overrieds
+sudo mv /vagrant/apache/apache2.conf /etc/apache2/apache2.conf
+sudo a2enmod rewrite
+sudo apache2ctl configtest
+sudo systemctl restart apache2
+
+#Own the html directory by www-data
+sudo chown -R vagrant:www-data /vagrant/html
+sudo chmod -R 755 /vagrant/html
+
 #Log into mysql to create a wordpress DB
-echo "CREATE DATABASE wordpress;" | mysql -u root -p rootpassword
-echo "GRANT ALL ON wordpress.* TO 'wordpressuser'@'localhost' IDENTIFIED BY 'password';" | mysql -u root -p rootpassword
-echo "FLUSH PRIVILEGES;" | mysql -u root -p rootpassword
+echo "CREATE DATABASE wordpress;" | mysql -u root -prootpassword
+echo "GRANT ALL ON wordpress.* TO 'wordpressuser'@'localhost' IDENTIFIED BY 'password';" | mysql -u root -prootpassword
+echo "FLUSH PRIVILEGES;" | mysql -u root -prootpassword
 
 
 #Clone my bash-it and install
