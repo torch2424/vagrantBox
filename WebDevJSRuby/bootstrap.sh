@@ -72,5 +72,6 @@ grunt --version
 
 #Add my personal preferences
 sh /vagrant/BaseVagrant/personalPrefs.sh
+source /home/vagrant/.bashrc
 
 #Finished!

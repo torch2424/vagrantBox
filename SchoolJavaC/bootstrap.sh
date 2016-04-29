@@ -11,6 +11,7 @@ sudo apt-get install -y build-essential git git-core curl vim openjdk-7-jdk ecli
 
 #Add my personal preferences
 sh /vagrant/BaseVagrant/personalPrefs.sh
+source /home/vagrant/.bashrc
 
 
 #Finished!

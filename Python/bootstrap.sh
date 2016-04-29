@@ -32,5 +32,6 @@ python -m textblob.download_corpora
 
 #Add my personal preferences
 sh /vagrant/BaseVagrant/personalPrefs.sh
+source /home/vagrant/.bashrc
 
 #Finished!

@@ -37,6 +37,7 @@ echo "FLUSH PRIVILEGES;" | mysql -u root -prootpassword
 
 #Add my personal preferences
 sh /vagrant/BaseVagrant/personalPrefs.sh
+source /home/vagrant/.bashrc
 
 #Lastly, remind users to import a wp-config for wordpress
 echo "****************************************************"
