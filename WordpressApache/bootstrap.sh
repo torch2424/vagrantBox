@@ -8,9 +8,7 @@
 #https://github.com/torch2424/Team-No-Comply-Games-Wordpress
 
 #Remove Non-interactive .bashrc lines
-echo "Modifying .bashrc to allow edits"
-sed '5,10d;' /home/vagrant/.bashrc > /home/vagrant/.bashrcNew
-mv /home/vagrant/.bashrcNew /home/vagrant/.bashrc
+sh /vagrant/BaseVagrant/interactiveBash.sh
 
 #Update The Distro
 sudo apt-get update
@@ -30,21 +28,19 @@ echo "phpmyadmin phpmyadmin/reconfigure-webserver multiselect none" | sudo debco
 sudo apt-get -y install mysql-server php5-mysql phpmyadmin
 
 # Replace apache dir.conf, enable apache php
-sudo cp /vagrant/apache/dir.conf /etc/apache2/mods-enabled/dir.conf
+sudo cp /vagrant/BaseApache/dir.conf /etc/apache2/mods-enabled/dir.conf
 
 #Restart apache
 sudo service apache2 restart
 
 #Set our document root so we can access it
-mkdir /vagrant/html
-sudo cp /vagrant/apache/000-default.conf /etc/apache2/sites-available/000-default.conf
-sudo cp /vagrant/apache/index.php /vagrant/html
+sudo cp /vagrant/BaseApache/000-default.conf /etc/apache2/sites-available/000-default.conf
 
 #Restart apache
 sudo service apache2 restart
 
 #Allow .htaccess overrides
-sudo cp /vagrant/apache/apache2.conf /etc/apache2/apache2.conf
+sudo cp /vagrant/BaseApache/apache2.conf /etc/apache2/apache2.conf
 sudo a2enmod rewrite
 sudo apache2ctl configtest
 sudo systemctl restart apache2
@@ -52,6 +48,7 @@ sudo systemctl restart apache2
 #Own the html directory by www-data
 sudo chown -R vagrant:www-data /vagrant/html
 sudo chmod -R 755 /vagrant/html
+
 #Restart apache for the permissions change
 sudo service apache2 restart
 
@@ -60,20 +57,8 @@ echo "CREATE DATABASE wordpress;" | mysql -u root -prootpassword
 echo "GRANT ALL ON wordpress.* TO 'wordpressuser'@'localhost' IDENTIFIED BY 'password';" | mysql -u root -prootpassword
 echo "FLUSH PRIVILEGES;" | mysql -u root -prootpassword
 
-
-#Clone my bash-it and install
-git clone --depth=1 https://github.com/torch2424/bash-it.git ~/.bash_it
-~/.bash_it/install.sh < /vagrant/bashItInput.txt
-source /home/vagrant/.bashrc
-
-#Cache github credentials for 12 hours
-git config --global credential.helper cache
-git config --global credential.helper 'cache --timeout=43200'
-
-#Add our awesome ubuntu banner
-sudo cp /vagrant/UbuntuBanner/sshd_config /etc/ssh/sshd_config
-sudo cp /vagrant/UbuntuBanner/issue.net /etc/issue.net
-sudo cp /vagrant/UbuntuBanner/issue.net /etc/motd
+#Add my personal preferences
+sh /vagrant/BaseVagrant/personalPrefs.sh
 
 #Lastly, remind users to import a wp-config for wordpress
 echo "****************************************************"

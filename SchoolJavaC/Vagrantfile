@@ -17,6 +17,9 @@ Vagrant.configure(2) do |config|
   # Name the Vagrant instance
   config.vm.define "SchoolJavaC"
 
+  #Configure synced folders
+  config.vm.synced_folder "../", "/vagrant"
+
   #Run my bootstrap script
   config.vm.provision :shell, path: "bootstrap.sh", privileged: false
 
