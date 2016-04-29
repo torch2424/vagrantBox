@@ -16,13 +16,13 @@ sudo apt-get install -y apache2 php5 libapache2-mod-php5 php5-mcrypt git vim cur
 
 #Download mysql server and phpmyadmin (non-interactive)
 #From: https://gist.github.com/rrosiek/8190550
-echo "mysql-server mysql-server/root_password password rootpassword" | debconf-set-selections
-echo "mysql-server mysql-server/root_password_again password rootpassword" | debconf-set-selections
-echo "phpmyadmin phpmyadmin/dbconfig-install boolean true" | debconf-set-selections
-echo "phpmyadmin phpmyadmin/app-password-confirm password rootpassword" | debconf-set-selections
-echo "phpmyadmin phpmyadmin/mysql/admin-pass password rootpassword" | debconf-set-selections
-echo "phpmyadmin phpmyadmin/mysql/app-pass password rootpassword" | debconf-set-selections
-echo "phpmyadmin phpmyadmin/reconfigure-webserver multiselect none" | debconf-set-selections
+sudo echo "mysql-server mysql-server/root_password password rootpassword" | debconf-set-selections
+sudo echo "mysql-server mysql-server/root_password_again password rootpassword" | debconf-set-selections
+sudo echo "phpmyadmin phpmyadmin/dbconfig-install boolean true" | debconf-set-selections
+sudo echo "phpmyadmin phpmyadmin/app-password-confirm password rootpassword" | debconf-set-selections
+sudo echo "phpmyadmin phpmyadmin/mysql/admin-pass password rootpassword" | debconf-set-selections
+sudo echo "phpmyadmin phpmyadmin/mysql/app-pass password rootpassword" | debconf-set-selections
+sudo echo "phpmyadmin phpmyadmin/reconfigure-webserver multiselect none" | debconf-set-selections
 sudo apt-get -y install mysql-server php5-mysql phpmyadmin
 
 # Replace apache dir.conf, enable apache php
@@ -34,6 +34,7 @@ sudo service apache2 restart
 #Set our document root so we can access it
 mkdir /vagrant/html
 sudo cp /vagrant/apache/000-default.conf /etc/apache2/sites-available/000-default.conf
+sudo cp /vagrant/apache/index.php /vagrant/html
 
 #Restart apache
 sudo service apache2 restart
