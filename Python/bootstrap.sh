@@ -16,8 +16,14 @@ sudo apt-get install -y build-essential libssl-dev libffi-dev python-dev python-
 #Update pip
 sudo pip install --upgrade pip
 
+#Get Python ssl working
+sudo -H pip install -U pyopenssl ndg-httpsclient pyasn1
+
 #Install scipy (And Numpy)
-sudo -H pip install -U git+https://github.com/scipy/scipy.git
+sudo -H pip install -U scipy
+
+#Echo scipy install (To create a newline, because pip doesn't)
+echo "Vagrant Bootstrap: Scipy was installed!"
 
 #Install libraries with pip
 sudo -H pip install -U nltk textblob scikit-learn
