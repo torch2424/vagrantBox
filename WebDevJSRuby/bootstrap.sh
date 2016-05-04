@@ -62,6 +62,10 @@ rbenv rehash
 gem install jekyll
 rbenv rehash
 
+#Install Bundlrer
+gem install bundle
+rbenv rehash
+
 #Install stuff with npm
 npm install -g npm
 npm install --global yo --unsafe-perm
