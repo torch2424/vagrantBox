@@ -17,6 +17,9 @@ Vagrant.configure(2) do |config|
   # Name the Vagrant instance
   config.vm.define "WordpressApache"
 
+  #Configure synced folders
+  config.vm.synced_folder "../", "/vagrant"
+
   # Forwarding our port 80
   config.vm.network "forwarded_port", guest: 80, host: 8080
 
