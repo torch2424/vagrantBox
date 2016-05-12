@@ -66,6 +66,10 @@ rbenv rehash
 gem install bundle
 rbenv rehash
 
+#Install Github Pages
+gem install github-pages
+rbenv rehash
+
 #Install stuff with npm
 npm install -g npm
 npm install --global yo --unsafe-perm
