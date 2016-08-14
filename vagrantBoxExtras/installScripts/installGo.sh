@@ -11,6 +11,9 @@ sudo cmake .
 sudo make
 sudo make install
 cd ..
+#Clean up
+sudo rm glfw-3.2.zip
+sudo rm -rf glfw-3.2
 
 #Install Go 1.5
 #Installing from source and not GVM as it has a bunch of issues
@@ -21,6 +24,8 @@ curl -O https://storage.googleapis.com/golang/go$GO_VERSION.linux-amd64.tar.gz
 echo 'Unpacking go language'
 sudo tar -C /usr/local -xzf go$GO_VERSION.linux-amd64.tar.gz
 sudo chown -R root:root /usr/local/go
+#Cleanup
+sudo rm go$GO_VERSION.linux-amd64.tar.gz
 
 #Editing .bashrc
 echo 'Setting up correct env. variables'

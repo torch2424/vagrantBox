@@ -17,5 +17,8 @@ sudo cp /vagrant/vagrantBoxExtras/configFiles/ubuntuBanner/sshd_config /etc/ssh/
 sudo cp /vagrant/vagrantBoxExtras/configFiles/ubuntuBanner/issue.net /etc/issue.net
 sudo cp /vagrant/vagrantBoxExtras/configFiles/ubuntuBanner/issue.net /etc/motd
 
+# Source our bashrc
+source /home/vagrant/.bashrc
+
 
 #Finished!

@@ -16,7 +16,32 @@ sudo chown vagrant:vagrant /home/vagrant/.bashrc
 
 # Allow the appropriate scripts to be executed
 chmod +x /vagrant/vagrantBoxExtras/vagrantDevSetup.sh
+chmod +x /vagrant/vagrantBoxExtras/configFiles/*.sh
 chmod +x /vagrant/vagrantBoxExtras/installScripts/*.sh
+
+# Create a 2 gig swapfile for longer install (from https://gist.github.com/shovon/9dd8d2d1a556b8bf9c82)
+# size of swapfile in megabytes
+swapsize=2048
+
+# does the swap file already exist?
+grep -q "swapfile" /etc/fstab
+
+# if not then create it
+if [ $? -ne 0 ]; then
+  echo 'swapfile not found. Adding swapfile.'
+  fallocate -l ${swapsize}M /swapfile
+  chmod 600 /swapfile
+  mkswap /swapfile
+  swapon /swapfile
+  echo '/swapfile none swap defaults 0 0' >> /etc/fstab
+else
+  echo 'swapfile found. No changes made.'
+fi
+
+# output results to terminal
+df -h
+cat /proc/swaps
+cat /proc/meminfo | grep Swap
 
 # Make the source folder
 sudo mkdir /vagrant/source
