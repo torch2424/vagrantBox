@@ -1,6 +1,7 @@
 # Ignore folders/repos in our vagrant environments
 */*/
 html
+npm-debug.log
 
 #Exceptions to the above folder rule, for organization in bootstrapping
 !/vagrantBoxExtras/*
