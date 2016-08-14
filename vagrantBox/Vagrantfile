@@ -24,24 +24,24 @@ Vagrant.configure(2) do |config|
     config.ssh.forward_agent = true
     config.ssh.forward_x11 = true
 
-    # Allow audio support for vagrant
+    # Customize our virtualbox
     config.vm.provider :virtualbox do |vb|
+
+        #Add support for audio
         vb.customize [
-        "modifyvm", :id,
-        "--audio", "alsa",
-        "--audiocontroller", "hda"
+            "modifyvm", :id,
+            "--audio", "alsa",
+            "--audiocontroller", "hda"
         ]
-    end
 
-    # Customize our vagrant box to have more memory
-    config.vm.customize [
-    "modifyvm", :id,
-    "--name", "TorchVagrantBox",
-    "--memory", "1024"
-    ]
+        #Set Virtualbox memory
+        vb.customize [
+            "modifyvm", :id,
+            "--name", "TorchVagrantBox",
+            "--memory", "1024"
+        ]
 
-    #Fix slow rubygems
-    config.vm.provider "virtualbox" do |vb|
+        #Speed up ruby gems install
         vb.customize ["modifyvm", :id, "--natdnsproxy1", "off"]
         vb.customize ["modifyvm", :id, "--natdnshostresolver1", "off"]
     end
