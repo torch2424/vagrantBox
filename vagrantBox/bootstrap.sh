@@ -31,8 +31,8 @@ sudo cp /vagrant/vagrantBoxExtras/configFiles/.asoundrc /home/vagrant/.asoundrc
 sudo usermod -a -G audio vagrant
 
 # Allow the appropriate scripts to be executed
-sudo chmod +x /vagrant/vagrantBoxExtras/vagrantDevSetup.sh
-sudo chmod +x -r /vagrant/vagrantBoxExtras/installScripts/*.sh
+chmod +x /vagrant/vagrantBoxExtras/vagrantDevSetup.sh
+chmod +x /vagrant/vagrantBoxExtras/installScripts/*.sh
 
 # Inform user done provisioning, and can run enviornment set up scripts
 

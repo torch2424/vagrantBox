@@ -2,5 +2,6 @@
 */*/
 
 #Exceptions to the above folder rule, for organization in bootstrapping
-!/BaseVagrant/*
-!/BaseApache/*
+!/vagrantBoxExtras/*
+!/vagrantBox/bootstrap.sh
+!/vagrantBox/Vagrantfile
