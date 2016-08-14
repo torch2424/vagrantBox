@@ -27,7 +27,7 @@ echo 'Setting up correct env. variables'
 echo 'export GOROOT=/usr/local/go' >> /home/vagrant/.bashrc
 echo 'export GOPATH=/vagrant/goPath' >> /home/vagrant/.bashrc
 echo 'export PATH="$PATH:$GOROOT/bin:$GOPATH/bin"' >> /home/vagrant/.bashrc
-. /home/vagrant/.bashrc
+source /home/vagrant/.bashrc
 
 #Test go with a hello world
 mkdir -p /vagrant/goPath/{bin,pkg,src}

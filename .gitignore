@@ -1,5 +1,6 @@
 # Ignore folders/repos in our vagrant environments
 */*/
+html
 
 #Exceptions to the above folder rule, for organization in bootstrapping
 !/vagrantBoxExtras/*

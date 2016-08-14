@@ -37,5 +37,5 @@ chmod +x /vagrant/vagrantBoxExtras/installScripts/*.sh
 # Inform user done provisioning, and can run enviornment set up scripts
 
 echo ""
-echo "Your box has now finished provisioning! This box also has scripts for instlaling multiple development environemnts. SSH into your new vagrant box using 'vagrant ssh', and then you can run the dev enviornment setup scripts by running 'sudo sh /vagrant/vagrantBoxExtras/vagrantDevSetup.sh'. Have a nice day!"
+echo "Your box has now finished provisioning! This box also has scripts for instlaling multiple development environemnts. SSH into your new vagrant box using 'vagrant ssh', and then you can run the dev enviornment setup scripts by running './vagrant/vagrantBoxExtras/vagrantDevSetup.sh'. Have a nice day!"
 echo ""
