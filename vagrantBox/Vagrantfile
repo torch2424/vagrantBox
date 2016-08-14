@@ -4,35 +4,48 @@
 # you're doing.
 Vagrant.configure(2) do |config|
 
-  # Every Vagrant development environment requires a box. You can search for
-  # boxes at https://atlas.hashicorp.com/search.
-  config.vm.box = "ubuntu/trusty64"
+    # Every Vagrant development environment requires a box. You can search for
+    # boxes at https://atlas.hashicorp.com/search.
+    config.vm.box = "ubuntu/trusty64"
 
-  # Name the Vagrant instance
-  config.vm.define "TorchVagrantBox"
+    # Name the Vagrant instance
+    config.vm.define "TorchVagrantBox"
 
-  #Configure synced folders
-  config.vm.synced_folder "../", "/vagrant"
+    #Configure synced folders
+    config.vm.synced_folder "../", "/vagrant"
 
-  # Forwarding our port 80
-  config.vm.network "forwarded_port", guest: 80, host: 8080
-  config.vm.network "forwarded_port", guest: 4000, host: 4000
-  config.vm.network "forwarded_port", guest: 8000, host: 8000
+    # Forwarding our port 80
+    config.vm.network "forwarded_port", guest: 80, host: 8080
+    config.vm.network "forwarded_port", guest: 4000, host: 4000
+    config.vm.network "forwarded_port", guest: 8000, host: 8000
 
-  # Forwarding our display for graphical programs
-  # Must install xauth on host machine (sudo apt-get install xauth)
-  config.ssh.forward_agent = true
-  config.ssh.forward_x11 = true
+    # Forwarding our display for graphical programs
+    # Must install xauth on host machine (sudo apt-get install xauth)
+    config.ssh.forward_agent = true
+    config.ssh.forward_x11 = true
 
-  # Customize our vagrant box to have more memory, and support audio
-  config.vm.customize [
+    # Allow audio support for vagrant
+    config.vm.provider :virtualbox do |vb|
+        vb.customize [
+        "modifyvm", :id,
+        "--audio", "alsa",
+        "--audiocontroller", "hda"
+        ]
+    end
+
+    # Customize our vagrant box to have more memory
+    config.vm.customize [
     "modifyvm", :id,
-    "--audio", "alsa",
-    "--audiocontroller", "hda"
     "--name", "TorchVagrantBox",
     "--memory", "1024"
-  ]
+    ]
 
-  #Run my bootstrap script
-  config.vm.provision :shell, path: "bootstrap.sh", privileged: true, keep_color: true
+    #Fix slow rubygems
+    config.vm.provider "virtualbox" do |vb|
+        vb.customize ["modifyvm", :id, "--natdnsproxy1", "off"]
+        vb.customize ["modifyvm", :id, "--natdnshostresolver1", "off"]
+    end
+
+    #Run my bootstrap script
+    config.vm.provision :shell, path: "bootstrap.sh", privileged: true, keep_color: true
 end
