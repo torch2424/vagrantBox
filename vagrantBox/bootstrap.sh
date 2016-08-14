@@ -11,6 +11,13 @@ echo "Modifying .bashrc to allow edits"
 sed '5,10d;' /home/vagrant/.bashrc > /home/vagrant/.bashrcNew
 mv /home/vagrant/.bashrcNew /home/vagrant/.bashrc
 
+# Ensure the vagrant user owns the .bashrc
+sudo chown vagrant:vagrant /home/vagrant/.bashrc
+
+# Allow the appropriate scripts to be executed
+chmod +x /vagrant/vagrantBoxExtras/vagrantDevSetup.sh
+chmod +x /vagrant/vagrantBoxExtras/installScripts/*.sh
+
 # Make the source folder
 sudo mkdir /vagrant/source
 
@@ -28,11 +35,8 @@ sudo dpkg -i oem-audio-hda-daily-dkms_0.201607270501~ubuntu14.04.1_all.deb
 rm oem-audio-hda-daily-dkms_0.201607270501~ubuntu14.04.1_all.deb
 sudo apt-get -y install alsa-utils paman
 sudo cp /vagrant/vagrantBoxExtras/configFiles/.asoundrc /home/vagrant/.asoundrc
+sudo chown vagrant:vagrant /home/vagrant/.asoundrc
 sudo usermod -a -G audio vagrant
-
-# Allow the appropriate scripts to be executed
-chmod +x /vagrant/vagrantBoxExtras/vagrantDevSetup.sh
-chmod +x /vagrant/vagrantBoxExtras/installScripts/*.sh
 
 # Inform user done provisioning, and can run enviornment set up scripts
 
