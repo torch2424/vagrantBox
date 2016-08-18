@@ -14,6 +14,18 @@ h1 {
 <h1>Please go to a repo subdirectory of the vagrant box</h1>
 <br>
 <br>
+<h1>Subdirectories in /html :</h1>
+<br>
+<?php
+//Loop through to find all the folders in /html
+$folders = array_filter(glob('*'), 'is_dir');
+foreach ($folders as $folder) {
+    echo '<a href="' . $folder. '">'. $folder. '</a>';
+    echo '<br>';
+}
+unset($folder); // break the reference with the last element
+?>
+<br>
 <?php
 phpinfo();
 ?>
