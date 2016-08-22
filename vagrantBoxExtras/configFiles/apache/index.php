@@ -8,6 +8,11 @@ h1 {
     -ms-transition: opacity 2s ease-in;
     transition: opacity 2s ease-in;
 }
+.center {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
 </style>
 <br>
 <br>
@@ -20,7 +25,7 @@ h1 {
 //Loop through to find all the folders in /html
 $folders = array_filter(glob('*'), 'is_dir');
 foreach ($folders as $folder) {
-    echo '<a href="' . $folder. '">'. $folder. '</a>';
+    echo '<a class = "center" href="' . $folder. '">'. $folder. '</a>';
     echo '<br>';
 }
 unset($folder); // break the reference with the last element
