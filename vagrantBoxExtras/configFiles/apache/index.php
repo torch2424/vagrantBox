@@ -21,6 +21,7 @@ h1 {
 <br>
 <h1>Subdirectories in /html :</h1>
 <br>
+<div class = "linkContainer center">
 <?php
 //Loop through to find all the folders in /html
 $folders = array_filter(glob('*'), 'is_dir');
@@ -30,7 +31,11 @@ foreach ($folders as $folder) {
 }
 unset($folder); // break the reference with the last element
 ?>
+</div>
 <br>
+<br>
+<br>
+<h1>Php Info:</h1>
 <?php
 phpinfo();
 ?>
