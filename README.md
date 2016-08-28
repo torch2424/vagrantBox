@@ -17,12 +17,15 @@ The folder "html" is where web servers will look for websites can be cloned and 
 # FAQ's (Well I am assuming these would be FAQ's)
 
 1. How do I run X install script again?
-- Install scripts can be run with  'sh /vagrant/vagrantBoxExtras/installScript/YOUR_DESIRED_INSTALL'
+** Install scripts can be run with  'sh /vagrant/vagrantBoxExtras/installScript/YOUR_DESIRED_INSTALL'
 
 2. What ports on my vagrant box go where?
-- Port 80 in vagrant is mapped to post 8080 on the host (http://localhost:8080)
-- Port 8000 in vagrant is mapped to post 8000 on the host (http://localhost:8000)
-- Port 4000 in vagrant is mapped to post 4000 on the host (http://localhost:4000)
+** Port 80 in vagrant is mapped to post 8080 on the host (http://localhost:8080)
+** Port 8000 in vagrant is mapped to post 8000 on the host (http://localhost:8000)
+** Port 4000 in vagrant is mapped to post 4000 on the host (http://localhost:4000)
 
-3. I found something wrong with the box, how can I fix it for everyone?
-- Please, if you find any issues make a pull request, that way this can become a better vagrant box for everyone!
+3. How do I log in to phpMyAdmin?
+** Username: root, Password: rootpassword
+
+4. I found something wrong with the box, how can I fix it for everyone?
+** Please, if you find any issues make a pull request, that way this can become a better vagrant box for everyone!
