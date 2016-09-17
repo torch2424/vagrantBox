@@ -12,7 +12,9 @@ Vagrant.configure(2) do |config|
     config.vm.define "TorchVagrantBox"
 
     #Configure synced folders
-    config.vm.synced_folder "../", "/vagrant"
+    # Also, allow file and system notifications to propogate to the vagrantbox
+    # https://github.com/adrienkohlbecker/vagrant-fsnotify
+    config.vm.synced_folder "../", "/vagrant", fsnotify: true
 
     # Forwarding our ports
     config.vm.network "forwarded_port", guest: 80, host: 8080
@@ -27,10 +29,6 @@ Vagrant.configure(2) do |config|
     # Must install xauth on host machine (sudo apt-get install xauth)
     config.ssh.forward_agent = true
     config.ssh.forward_x11 = true
-
-    # Allow file and system notifications to propogate to the vagrantbox
-    # https://github.com/mhallin/vagrant-notify-forwarder
-    config.notify_forwarder.port = 22020
 
     # Customize our virtualbox
     config.vm.provider :virtualbox do |vb|
