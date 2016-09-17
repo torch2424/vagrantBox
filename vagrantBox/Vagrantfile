@@ -12,9 +12,7 @@ Vagrant.configure(2) do |config|
     config.vm.define "TorchVagrantBox"
 
     #Configure synced folders
-    # Also, allow file and system notifications to propogate to the vagrantbox
-    # https://github.com/adrienkohlbecker/vagrant-fsnotify
-    config.vm.synced_folder "../", "/vagrant", fsnotify: true
+    config.vm.synced_folder "../", "/vagrant"
 
     # Forwarding our ports
     config.vm.network "forwarded_port", guest: 80, host: 8080
