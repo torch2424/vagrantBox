@@ -5,7 +5,7 @@ sudo apt-get install -y libssl-dev zlib1g-dev libssl-dev libreadline-dev libyaml
 
 #Install NVM (Node Version Manager)
 curl -o- https://raw.githubusercontent.com/creationix/nvm/master/install.sh | sh
-source /home/vagrant/.bashrc
+source /home/$(whoami)/.bashrc
 
 #Install Node (Latest LTS on 4/23/16)
 nvm install 4.4.3
@@ -15,7 +15,7 @@ nvm alias default 4.4.3
 
 #Install npm without sudo
 curl https://raw.githubusercontent.com/glenpike/npm-g_nosudo/master/npm-g-nosudo.sh | sh < /vagrant/vagrantBoxExtras/configFiles/npmNoSudoInput.txt
-source /home/vagrant/.bashrc
+source /home/$(whoami)/.bashrc
 
 # Update npm
 npm install -g npm
