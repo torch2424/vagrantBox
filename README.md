@@ -2,7 +2,7 @@
 
 Vagrant files to make my life ALOT easier, it will set up virtual dev environments for all of my codes
 
-![Vagrant ssh gif](https://files.aaronthedev.com/$/9cv6e)
+![Vagrant ssh gif](https://files.aaronthedev.com/$/eqv34)
 
 # How the Vagrant Environment is set up
 
