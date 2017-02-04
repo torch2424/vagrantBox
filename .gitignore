@@ -2,6 +2,7 @@
 */*/
 html
 npm-debug.log
+.DS_Store
 
 #Exceptions to the above folder rule, for organization in bootstrapping
 !/vagrantBoxExtras/*

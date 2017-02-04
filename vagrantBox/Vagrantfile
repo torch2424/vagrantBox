@@ -32,12 +32,12 @@ Vagrant.configure(2) do |config|
     # Customize our virtualbox
     config.vm.provider :virtualbox do |vb|
 
-        #Add support for audio
-        vb.customize [
-            "modifyvm", :id,
-            "--audio", "alsa",
-            "--audiocontroller", "hda"
-        ]
+        # Add support for audio
+        # vb.customize [
+        #   "modifyvm", :id,
+        #    "--audio", "alsa",
+        #    "--audiocontroller", "hda"
+        # ]
 
         #Set Virtualbox memory
         vb.customize [
