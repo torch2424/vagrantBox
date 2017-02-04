@@ -13,4 +13,8 @@ sudo systemctl start mongodb
 sudo systemctl status mongodb
 sudo systemctl enable mongodb
 
-echo "MongoDb Successfully installed!"
+echo "MongoDb Successfully installed! Installing a nice web interface. Will Error if npm is not installed."
+
+npm install -g mongo-express
+
+echo "To run mongo interface, run mongo-express"
