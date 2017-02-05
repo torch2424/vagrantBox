@@ -10,7 +10,6 @@ sudo apt-get install -y mongodb-org
 sudo cp /vagrant/vagrantBoxExtras/configFiles/mongodb.service /etc/systemd/system/mongodb.service
 
 sudo systemctl start mongodb
-sudo systemctl status mongodb
 sudo systemctl enable mongodb
 
 echo "MongoDb Successfully installed! Installing a nice web interface. Will Error if npm is not installed."
